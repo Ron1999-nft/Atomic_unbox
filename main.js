@@ -1,13 +1,13 @@
-//UserInfomation
+//UserInfomation (user need to change) 
 let userPrivateKey = ""//account private key
 let userTransfrom = "" //account name
+let assetIDs = [] //required to be changed number in array can send more than one for unbox
+let collectionName = "" // required to be change for collection name
+let TempleteID = 28278//required to be changed
 
 //Transfer
 let userTransactionact = 'transfer' 
 let userTransto = "atomicassets"
-let assetIDs = [] //required to be changed number in array can send more than one for unbox
-let collectionName = "deadmau5" // required to be change for collection name
-let TempleteID = 28278//required to be changed
 //Unbox
 let unboxAcc = "unbox.nft"
 let Transmemo = "open pack"
@@ -27,14 +27,15 @@ const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), te
 let Timer = ()=>{
   year = 2021
   month = 1 // 0 = january, 1= febuary
-  day = 20
-  hour = 1 // 24 hour system
-  minute = 0 // 0 minute for exact execution
+  day = 18
+  hour = 16 // 24 hour system
+  minute = 57 // 0 minute for exact execution
   var buy_time = new Date(year,month,day,hour,minute,0,0);
   while (true){
     var time_now = new Date();
     //exit()
     if (time_now.getTime() >= buy_time.getTime()){
+      console.log("yes")
       break
     }
   }
@@ -68,6 +69,7 @@ let Transfer = () => {
           Transfer()
         })
 }
+
 
 let UnBox = () => {
     api.transact({
