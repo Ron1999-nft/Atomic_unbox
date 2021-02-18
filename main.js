@@ -88,10 +88,10 @@ let UnBox = () => {
       expireSeconds: 30,
       }).then((res) =>{
         console.log(res)
-        console.log('-----------------Transfer Sucess----------------------')
+        console.log('-----------------Unbox Sucess----------------------')
       }).catch((err) =>{ 
           console.log(err)
-          console.log('-----------------Transfer Fail----------------------')
+          console.log('-----------------Unbox Fail----------------------')
           UnBox()
         })
 }
