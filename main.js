@@ -1,13 +1,13 @@
 //UserInfomation
-let userPrivateKey = "5K7nZKGbTCqAFK9x1JdsUGPcjoTm7Yut1acWQAgRcFzpe3bR4JD"//account private key
-let userTransfrom = "vwtaytestacc" //account name
-let collectionName = "deadmau5" // required to be change for collection name
-let TempleteID = 28278//required to be changed
+let userPrivateKey = ""//account private key
+let userTransfrom = "" //account name
 
 //Transfer
 let userTransactionact = 'transfer' 
 let userTransto = "atomicassets"
 let assetIDs = [] //required to be changed number in array can send more than one for unbox
+let collectionName = "deadmau5" // required to be change for collection name
+let TempleteID = 28278//required to be changed
 //Unbox
 let unboxAcc = "unbox.nft"
 let Transmemo = "open pack"
