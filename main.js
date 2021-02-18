@@ -1,6 +1,6 @@
 //UserInfomation
-let userPrivateKey = "5K7nZKGbTCqAFK9x1JdsUGPcjoTm7Yut1acWQAgRcFzpe3bR4JD"//account private key
-let userTransfrom = "vwtaytestacc" //account name
+let userPrivateKey = ""//account private key
+let userTransfrom = "" //account name
 //Transfer
 let userTransactionact = 'transfer' 
 let userTransto = "atomicassets"
