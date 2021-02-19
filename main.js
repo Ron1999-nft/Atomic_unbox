@@ -3,7 +3,7 @@ let userTransactionact = 'transfer'
 let userTransto = "atomicassets"
 //Unbox
 let unboxAcc = "unbox.nft"
-let Transmemo = "open pack"
+let unboxMemo = "blek"
 let unBoxAction = "unbox"
 
 var fs = require('fs')
@@ -34,11 +34,11 @@ fs.readFile('data.txt', (err, data) => {
     let hour = parseInt(time[0])
     let minute = parseInt(time[1])
 
-    let userPrivateKey = pk[1]//account private key
-    let userTransfrom = user[1] //account name
-    let assetIDs = [parseInt(assid[1])] //required to be changed number in array can send more than one for unbox
-    let collectionName = col[1] // required to be change for collection name
-    let TempleteID = parseInt(tid[1])//required to be changed
+    let userPrivateKey = pk[1]
+    let userTransfrom = user[1] 
+    let assetIDs = [parseInt(assid[1])]
+    let collectionName = col[1] 
+    let TempleteID = parseInt(tid[1])
 
     // Api
     const { Api, JsonRpc } = require('eosjs');
@@ -49,18 +49,6 @@ fs.readFile('data.txt', (err, data) => {
     const privateKeys = [userPrivateKey];
     const signatureProvider = new JsSignatureProvider(privateKeys);
     const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() }); //required to submit transactions
-
-    //Timer
-    let Timer = () => {
-      var buy_time = new Date(year, month, day, hour, minute, 0, 0);
-      while (true) {
-        var time_now = new Date();
-        //exit()
-        if (time_now.getTime() >= buy_time.getTime()) {
-          break
-        }
-      }
-    }
 
     let Transfer = () => {
       api.transact({
@@ -75,7 +63,7 @@ fs.readFile('data.txt', (err, data) => {
             from: userTransfrom,
             to: unboxAcc,
             asset_ids: assetIDs,
-            memo: Transmemo
+            memo: unboxMemo
           },
         }]
       }, {
@@ -83,7 +71,9 @@ fs.readFile('data.txt', (err, data) => {
         expireSeconds: 30,
       }).then((res) => {
         console.log(res)
-        console.log('-----------------Transfer Sucess----------------------')
+        console.log('-----------------Transfer Sucess,Dont Stop the program----------------------')
+        Timer2(4000) // in miliseconds
+        UnBox()
       }).catch((err) => {
         console.log(err)
         console.log('-----------------Transfer Fail----------------------')
@@ -91,6 +81,36 @@ fs.readFile('data.txt', (err, data) => {
       })
     }
 
+    //Timer
+    let Timer1 = (earlier) => {
+      var Trans_time = new Date(year, month, day, hour, minute, 0, 0)
+      Trans_time = Trans_time - earlier
+      Trans_time = new Date(Trans_time)
+      console.log("Pending for assets to be transfer for account : " + userTransfrom + ", assetsID: " + assetIDs)
+      console.log('Transfer will start on : ' + Trans_time.getHours() + ':' + Trans_time.getMinutes() + ':' + Trans_time.getSeconds())
+      while (true) {
+        var time_now = new Date()
+        //exit()
+        if (time_now.getTime() >= Trans_time.getTime()) {
+          break
+        }
+      }
+    }
+
+    let Timer2 = (earlier) => {
+      var unbox_time = new Date(year, month, day, hour, minute, 0, 0)
+      unbox_time = unbox_time - earlier
+      unbox_time = new Date(unbox_time)
+      console.log("Pending for unboxing for account : " + userTransfrom + ", assetsID: " + assetIDs)
+      console.log('Unbox Time:' +unbox_time.getHours() + ':' + unbox_time.getMinutes() + ':' + unbox_time.getSeconds())
+      while (true) {
+        var time_now = new Date()
+        //exit()
+        if (time_now.getTime() >= unbox_time.getTime()) {
+          break
+        }
+      }
+    }
 
     let UnBox = () => {
       api.transact({
@@ -119,11 +139,10 @@ fs.readFile('data.txt', (err, data) => {
         UnBox()
       })
     }
-
+    
     let Main = () => {
-      Timer()
+      Timer1(120000) // in miliseconds
       Transfer()
-      UnBox()
     }
 
     Main()
