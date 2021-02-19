@@ -72,7 +72,7 @@ fs.readFile('data.txt', (err, data) => {
       }).then((res) => {
         console.log(res)
         console.log('-----------------Transfer Sucess,Dont Stop the program----------------------')
-        Timer2(4000) // in miliseconds
+        Timer2(5000) // in miliseconds
         UnBox()
       }).catch((err) => {
         console.log(err)
