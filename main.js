@@ -3,7 +3,7 @@ let userTransactionact = 'transfer'
 let userTransto = "atomicassets"
 //Unbox
 let unboxAcc = "unbox.nft"
-let unboxMemo = "blek"
+let unboxMemo = "open pack"
 let unBoxAction = "unbox"
 
 var fs = require('fs')
@@ -87,7 +87,7 @@ fs.readFile('data.txt', (err, data) => {
       Trans_time = Trans_time - earlier
       Trans_time = new Date(Trans_time)
       console.log("Pending for assets to be transfer for account : " + userTransfrom + ", assetsID: " + assetIDs)
-      console.log('Transfer will start on : ' + Trans_time.getHours() + ':' + Trans_time.getMinutes() + ':' + Trans_time.getSeconds())
+      console.log('Transfer will start on: ' + Trans_time.getHours() + ':' + Trans_time.getMinutes() + ':' + Trans_time.getSeconds())
       while (true) {
         var time_now = new Date()
         //exit()
@@ -102,7 +102,7 @@ fs.readFile('data.txt', (err, data) => {
       unbox_time = unbox_time - earlier
       unbox_time = new Date(unbox_time)
       console.log("Pending for unboxing for account : " + userTransfrom + ", assetsID: " + assetIDs)
-      console.log('Unbox Time:' +unbox_time.getHours() + ':' + unbox_time.getMinutes() + ':' + unbox_time.getSeconds())
+      console.log('Unbox Time: ' +unbox_time.getHours() + ':' + unbox_time.getMinutes() + ':' + unbox_time.getSeconds())
       while (true) {
         var time_now = new Date()
         //exit()
